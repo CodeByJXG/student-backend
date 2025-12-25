@@ -24,7 +24,7 @@ public class StudentController{
         return service.addStudent(student);
     }
   
-  @RequestMapping(value=address+"/ping",method = RequestMethod.GET)
+  @RequestMapping(value="/api/students/ping",method = RequestMethod.GET)
 public ResponseEntity<?> checkConnection() {
     return ResponseEntity.ok("Tong"); // no body
 }
