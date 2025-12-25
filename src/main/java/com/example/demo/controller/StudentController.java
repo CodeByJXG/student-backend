@@ -7,33 +7,33 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.ResponseEntity;
 @RestController()
+@RequestMapping("/api/students")
 public class StudentController{
-    private final String address = "/api/students";
     private final StudentService service;
-    StudentController(StudentService service){
+   public StudentController(StudentService service){
         this.service = service;
     }
     
-     @RequestMapping(value = address,method = RequestMethod.GET)
-    private List<Student> getAllStudents(){
+     @GetMapping()
+    public List<Student> getAllStudents(){
         return service.getAllStudents();
     }
     
-     @RequestMapping(value = address,method = RequestMethod.POST)
-    private Student addStudent(@RequestBody Student student){
+     @PostMapping()
+    public Student addStudent(@RequestBody Student student){
         return service.addStudent(student);
     }
   
-  @RequestMapping(value="/api/students/ping",method = RequestMethod.GET)
+  @GetMapping("/ping")
 public ResponseEntity<?> checkConnection() {
     return ResponseEntity.ok("Tong"); // no body
 }
 
- @RequestMapping(value=address+"/{id}",method=RequestMethod.PUT)
-    private Student addStudent(@PathVariable Long id , @RequestBody Student student){
+ @PutMapping("/{id}")
+    public Student updateStudent(@PathVariable Long id , @RequestBody Student student){
         return service.updateStudent(id,student);
     }
-    @RequestMapping(value = address+"/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
 public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
     service.deleteStudent(id);
     return ResponseEntity.ok().build(); // no body
