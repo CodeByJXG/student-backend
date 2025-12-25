@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 @RestController()
 public class StudentController{
-    private final String address = "/api/studentsc";
+    private final String address = "/api/students";
     private final StudentService service;
     StudentController(StudentService service){
         this.service = service;
