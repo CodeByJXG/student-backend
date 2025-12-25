@@ -1,0 +1,18 @@
+{
+  "plugin": "org.smartide.plugin.springboot",
+  "run": "./mvnw spring-boot:run",
+  "intelligence": {
+    ".java": {
+      "enabled": true,
+      "run": "java -jar /data/data/org.smartide.code/files/usr/share/jdtls/plugins/org.eclipse.equinox.launcher_*.jar -configuration /data/data/org.smartide.code/files/usr/share/jdtls/config_linux -data /data/data/org.smartide.code/files/usr/tmp/jdtls-workspace"
+    },
+    ".properties": {
+      "enabled": true,
+      "run": "lemminx"
+    },
+    ".json": {
+      "enabled": true,
+      "run": "vscode-json-language-server --stdio"
+    }
+  }
+}
