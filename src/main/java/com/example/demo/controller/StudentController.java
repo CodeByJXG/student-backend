@@ -1,9 +1,10 @@
 package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import com.example.demo.model.Student;
 import com.example.demo.service.StudentService;
+import org.springframework.web.bind.annotation.*;
+
 import org.springframework.http.ResponseEntity;
 @RestController()
 public class StudentController{
@@ -23,12 +24,12 @@ public class StudentController{
         return service.addStudent(student);
     }
   
-  @RequestMapping(value = address,method = RequestMethod.HEAD)
-public ResponseEntity<Void> checkConnection() {
-    return ResponseEntity.ok().build(); // no body
+  @RequestMapping(value="/api/ping")
+public ResponseEntity<?> checkConnection() {
+    return ResponseEntity.ok("Tong"); // no body
 }
 
- @PutMapping(address+"/{id}")
+ @RequestMapping(value=address+"/{id}",method=RequestMethod.PUT)
     private Student addStudent(@PathVariable Long id , @RequestBody Student student){
         return service.updateStudent(id,student);
     }
