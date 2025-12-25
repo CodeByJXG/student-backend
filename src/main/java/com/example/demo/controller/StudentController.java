@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 @RestController()
 public class StudentController{
-    private final String address = "/api/students";
+    private final String address = "/api/studentsc";
     private final StudentService service;
     StudentController(StudentService service){
         this.service = service;
@@ -24,7 +24,7 @@ public class StudentController{
         return service.addStudent(student);
     }
   
-  @RequestMapping(value=address+"/ping")
+  @RequestMapping(value=address+"/ping",method = RequestMethod.GET)
 public ResponseEntity<?> checkConnection() {
     return ResponseEntity.ok("Tong"); // no body
 }
